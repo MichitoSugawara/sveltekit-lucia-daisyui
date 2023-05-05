@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@lucia-auth/adapter-prisma': ^2.0.0
+  '@prisma/client': ^4.13.0
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/kit': ^1.5.0
   '@typescript-eslint/eslint-plugin': ^5.45.0
@@ -8,8 +10,10 @@ specifiers:
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte: ^2.26.0
+  lucia-auth: ^1.5.0
   prettier: ^2.8.0
   prettier-plugin-svelte: ^2.8.1
+  prisma: ^4.13.0
   svelte: ^3.54.0
   svelte-check: ^3.0.1
   sveltekit-superforms: ^0.8.5
@@ -17,6 +21,11 @@ specifiers:
   typescript: ^5.0.0
   vite: ^4.3.0
   zod: ^3.21.4
+
+dependencies:
+  '@lucia-auth/adapter-prisma': 2.0.0_pbhipa6go5kuoh54ufatjdjh7e
+  '@prisma/client': 4.13.0_prisma@4.13.0
+  lucia-auth: 1.5.0
 
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.1_@sveltejs+kit@1.16.0
@@ -28,6 +37,7 @@ devDependencies:
   eslint-plugin-svelte: 2.27.3_e3tiew2b4q4prbk4th5mqlc2ou
   prettier: 2.8.8
   prettier-plugin-svelte: 2.10.0_f6pmxuoopicxy7gb3t3nvoipzy
+  prisma: 4.13.0
   svelte: 3.58.0
   svelte-check: 3.3.1_svelte@3.58.0
   sveltekit-superforms: 0.8.5_rsatowotcdud2twzhyswivqjei
@@ -313,6 +323,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@lucia-auth/adapter-prisma/2.0.0_pbhipa6go5kuoh54ufatjdjh7e:
+    resolution: {integrity: sha512-8qxEcoVNJDbK8zXzyMK/4SHnLTaih0oNjTfp7l4ndRg5WI+eMgP3N0OUGQVaq3C5N0iIfkXxgj/ZGH8ZidwVeQ==}
+    peerDependencies:
+      '@prisma/client': ^4.2.0
+      lucia-auth: ^1.3.0
+    dependencies:
+      '@prisma/client': 4.13.0_prisma@4.13.0
+      lucia-auth: 1.5.0
+    dev: false
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -337,6 +357,28 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
+
+  /@prisma/client/4.13.0_prisma@4.13.0:
+    resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+      prisma: 4.13.0
+    dev: false
+
+  /@prisma/engines-version/4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a:
+    resolution: {integrity: sha512-fsQlbkhPJf08JOzKoyoD9atdUijuGBekwoOPZC3YOygXEml1MTtgXVpnUNchQlRSY82OQ6pSGQ9PxUe4arcSLQ==}
+    dev: false
+
+  /@prisma/engines/4.13.0:
+    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
+    requiresBuild: true
 
   /@sveltejs/adapter-auto/2.0.1_@sveltejs+kit@1.16.0:
     resolution: {integrity: sha512-anxxYMcQy7HWSKxN4YNaVcgNzCHtNFwygq72EA1Xv7c+5gSECOJ1ez1PYoLciPiFa7A3XBvMDQXUFJ2eqLDtAA==}
@@ -1178,6 +1220,10 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lucia-auth/1.5.0:
+    resolution: {integrity: sha512-lLgLvyJcCjK+dYwJrgzPWGjT+YGgl7JF13TahXKozf/C3KkX/fFzOAUkY0h5xnm585lJE5BBrQIXAXa+rDzW6g==}
+    dev: false
+
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -1389,6 +1435,14 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
+
+  /prisma/4.13.0:
+    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.13.0
 
   /punycode/2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}

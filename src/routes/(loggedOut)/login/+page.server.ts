@@ -2,6 +2,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { loginSchema } from '$lib/schemas/userSchema';
 import { superValidate } from 'sveltekit-superforms/server';
 import { fail } from '@sveltejs/kit';
+import { auth } from '$lib/server/lucia';
 
 const schema = loginSchema;
 
@@ -17,7 +18,15 @@ export const actions: Actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		// TODO: バリデーション後の処理
+		
+		// ログイン処理
+		try {
+			const key = await auth.useKey('username', form.data.username, form.data.password);
+			const session = await auth.createSession(key.userId);
+			event.locals.auth.setSession(session);
+		} catch(err) {
+			return fail(400, { form: { ...form, message: 'ログインエラー' } });
+		}
 		console.log(form);
 		return { form };
 	}

@@ -2,6 +2,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { signupSchema } from '$lib/schemas/signupSchema';
 import { superValidate } from 'sveltekit-superforms/server';
 import { fail } from '@sveltejs/kit';
+import { auth } from '$lib/server/lucia';
 
 const schema = signupSchema;
 
@@ -17,7 +18,23 @@ export const actions: Actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		// TODO: バリデーション後の処理
+		// サインアップ処理
+		try {
+			const user = await auth.createUser({
+				primaryKey: {
+					providerId: 'username',
+					providerUserId: form.data.username,
+					password: form.data.password
+				},
+				attributes: {
+					username: form.data.username
+				}
+			});
+			const session = await auth.createSession(user.userId);
+			event.locals.auth.setSession(session);
+		} catch {
+			return fail(400, { form: { ...form, message: 'サインアップエラー' } });
+		}
 		console.log(form);
 		return { form };
 	}

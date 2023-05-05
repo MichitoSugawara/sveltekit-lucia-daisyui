@@ -3,13 +3,13 @@
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: PageData;
-	const { form, errors, capture, restore, enhance } = superForm(data.form);
+	const { form, message, errors, capture, restore, enhance } = superForm(data.form);
 	export const snapshot = { capture, restore };
 </script>
 
 <div>
 	<h1>サインアップ</h1>
-	{#if data.form.message}<span class="invalid">{data.form.message}</span>{/if}
+	{#if $message}<span class="invalid">{$message}</span>{/if}
 	<form method="POST" use:enhance>
 		<label for="username">ユーザー名</label>
 		<input type="text" name="username" bind:value={$form.username} />
