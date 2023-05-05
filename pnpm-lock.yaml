@@ -12,9 +12,11 @@ specifiers:
   prettier-plugin-svelte: ^2.8.1
   svelte: ^3.54.0
   svelte-check: ^3.0.1
+  sveltekit-superforms: ^0.8.5
   tslib: ^2.4.1
   typescript: ^5.0.0
   vite: ^4.3.0
+  zod: ^3.21.4
 
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.1_@sveltejs+kit@1.16.0
@@ -28,9 +30,11 @@ devDependencies:
   prettier-plugin-svelte: 2.10.0_f6pmxuoopicxy7gb3t3nvoipzy
   svelte: 3.58.0
   svelte-check: 3.3.1_svelte@3.58.0
+  sveltekit-superforms: 0.8.5_rsatowotcdud2twzhyswivqjei
   tslib: 2.5.0
   typescript: 5.0.4
   vite: 4.3.4
+  zod: 3.21.4
 
 packages:
 
@@ -1643,6 +1647,18 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
+  /sveltekit-superforms/0.8.5_rsatowotcdud2twzhyswivqjei:
+    resolution: {integrity: sha512-6Nb3hXQmAJPLFeZyDSNbtGKX+R5LIkd5uDIAmqGeKrPqOIvdVvk7zyiP1L6IubhRLibhfE01ToUVKByKXDh6JQ==}
+    peerDependencies:
+      '@sveltejs/kit': 1.x
+      svelte: 3.x
+      zod: 3.x
+    dependencies:
+      '@sveltejs/kit': 1.16.0_svelte@3.58.0+vite@4.3.4
+      svelte: 3.58.0
+      zod: 3.21.4
+    dev: true
+
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
@@ -1787,4 +1803,8 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: true
