@@ -33,7 +33,7 @@ export const actions: Actions = {
 			const session = await auth.createSession(user.userId);
 			event.locals.auth.setSession(session);
 		} catch {
-			return fail(400, { form: { ...form, message: 'サインアップエラー' } });
+			return fail(400, { form: { ...form, message: 'ログインIDがすでに使われています' } });
 		}
 		console.log(form);
 		return { form };

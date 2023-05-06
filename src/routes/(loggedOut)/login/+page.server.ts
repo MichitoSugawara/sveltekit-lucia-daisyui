@@ -18,14 +18,16 @@ export const actions: Actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		
+
 		// ログイン処理
 		try {
 			const key = await auth.useKey('username', form.data.username, form.data.password);
 			const session = await auth.createSession(key.userId);
 			event.locals.auth.setSession(session);
-		} catch(err) {
-			return fail(400, { form: { ...form, message: 'ログインエラー' } });
+		} catch (err) {
+			return fail(400, {
+				form: { ...form, message: 'ログインIDもしくはパスワードが正しくありません' }
+			});
 		}
 		console.log(form);
 		return { form };

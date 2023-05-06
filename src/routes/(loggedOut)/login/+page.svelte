@@ -3,29 +3,49 @@
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: PageData;
-	const { form, message, errors, capture, restore, enhance } = superForm(data.form);
-	export const snapshot = { capture, restore };
+	const { form, message, errors, enhance, delayed } = superForm(data.form);
 </script>
 
-<div>
-	<h1>ログイン</h1>
-	{#if $message}<span class="invalid">{$message}</span>{/if}
-	<form method="POST" use:enhance>
-		<label for="username">ユーザー名</label>
-		<input type="text" name="username" bind:value={$form.username} />
-		{#if $errors.username}<span class="invalid">{$errors.username[0]}</span>{/if}
-
-		<label for="password">パスワード</label>
-		<input type="password" name="password" bind:value={$form.password} />
-		{#if $errors.password}<span class="invalid">{$errors.password[0]}</span>{/if}
-
-		<div><button>ログイン</button></div>
-		<a href="/signup">サインアップ</a>
-	</form>
+<div class="relative flex flex-col items-center justify-center h-screen overflow-hidden">
+	<div class="w-full lg:max-w-lg p-6 m-auto rounded-md shadow-2xl">
+		<h1 class="text-3xl font-semibold text-center text-primary">ログイン</h1>
+		{#if $message}<span class="text-sm text-red-600">{$message}</span>{/if}
+		<form class="space-y-4" method="POST" use:enhance>
+			<div>
+				<label class="label" for="username"
+					><span class="text-base label-text">ユーザー名</span></label
+				>
+				<input
+					class="w-full input input-bordered input-primary {$errors.username || $message
+						? 'input-error'
+						: ''}"
+					type="text"
+					name="username"
+					bind:value={$form.username}
+				/>
+				{#if $errors.username}<span class="text-xs text-red-600">{$errors.username[0]}</span>{/if}
+			</div>
+			<div>
+				<label class="label" for="password"
+					><span class="text-base label-text">パスワード</span></label
+				>
+				<input
+					class="w-full input input-bordered input-primary {$errors.password || $message
+						? 'input-error'
+						: ''}"
+					type="password"
+					name="password"
+					bind:value={$form.password}
+				/>
+				{#if $errors.password}<span class="text-xs text-red-600">{$errors.password[0]}</span>{/if}
+			</div>
+			<div><button class="btn btn-block btn-primary" disabled={$delayed}>ログイン</button></div>
+			<div>
+				<span class="text-sm">アカウントをお持ちでない方は</span>
+				<a class="text-sm text-blue-600 hover:underline hover:text-blue-400" href="/signup"
+					>新規登録</a
+				>
+			</div>
+		</form>
+	</div>
 </div>
-
-<style>
-	.invalid {
-		color: red;
-	}
-</style>
