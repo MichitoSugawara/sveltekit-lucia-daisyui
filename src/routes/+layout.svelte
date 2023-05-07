@@ -2,12 +2,14 @@
 	import { navigating } from '$app/stores';
 	import '../app.postcss';
 	import Loading from '$lib/components/Loading.svelte';
-	import { loading } from '$lib/stores/loading';
-	// loadingストアがtrue時にページ遷移が起きた場合はloadingストアをリセット
-	$: if ($navigating) $loading = false;
+  import { loading, submitting } from '$lib/stores';
+	// submittingストアがtrue時にページ遷移が起きた場合はsubmittingストアをリセット
+	$: if ($navigating) $submitting = false;
+	// ページ遷移中もしくはsubmittingストア
+	$: $loading = !!$navigating || $submitting;
 </script>
 
-{#if $navigating || $loading}
+{#if $loading}
 	<Loading />
 {/if}
 

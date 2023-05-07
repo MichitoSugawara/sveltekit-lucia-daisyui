@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { loading } from '$lib/stores/loading';
+	import { submitting as submittingStore } from '$lib/stores';
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: PageData;
-	const { form, message, errors, submitting, enhance, capture, restore } = superForm(data.form, {
+	const { form, message, errors, submitting, delayed, enhance, capture, restore } = superForm(data.form, {
 		taintedMessage: false
 	});
-	$: $loading = $submitting;
+	$: $submittingStore = $delayed;
 	export const snapshot = { capture, restore };
 </script>
 
