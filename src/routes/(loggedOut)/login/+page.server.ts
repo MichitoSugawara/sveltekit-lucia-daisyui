@@ -6,11 +6,7 @@ import { auth } from '$lib/server/lucia';
 
 const schema = loginSchema;
 
-export const load = (async (event) => {
-	// 認証されたユーザーであればユーザーページへリダイレクト
-	const session = await event.locals.auth.validate();
-	if (session) throw redirect(302, '/user');
-
+export const load = (async () => {
 	const form = await superValidate(schema);
 	return { form };
 }) satisfies PageServerLoad;

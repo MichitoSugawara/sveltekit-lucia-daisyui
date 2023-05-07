@@ -41,6 +41,7 @@
 					type="password"
 					name="password"
 					bind:value={$form.password}
+					disabled={$submitting}
 				/>
 				{#if $errors.password}<span class="text-xs text-red-600">{$errors.password[0]}</span>{/if}
 			</div>
@@ -56,6 +57,7 @@
 					type="password"
 					name="confirmPassword"
 					bind:value={$form.confirmPassword}
+					disabled={$submitting}
 				/>
 				{#if $errors.confirmPassword}<span class="text-xs text-red-600"
 						>{$errors.confirmPassword[0]}</span

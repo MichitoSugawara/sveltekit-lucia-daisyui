@@ -26,6 +26,7 @@
 					type="text"
 					name="username"
 					bind:value={$form.username}
+					disabled={$submitting}
 				/>
 				{#if $errors.username}<span class="text-xs text-red-600">{$errors.username[0]}</span>{/if}
 			</div>
@@ -40,6 +41,7 @@
 					type="password"
 					name="password"
 					bind:value={$form.password}
+					disabled={$submitting}
 				/>
 				{#if $errors.password}<span class="text-xs text-red-600">{$errors.password[0]}</span>{/if}
 			</div>
