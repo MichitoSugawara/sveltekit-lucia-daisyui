@@ -35,7 +35,6 @@ export const actions: Actions = {
 		} catch {
 			return fail(400, { form: { ...form, message: 'ログインIDがすでに使われています' } });
 		}
-		console.log(form);
 		return { form };
 	}
 };

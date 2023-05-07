@@ -29,7 +29,6 @@ export const actions: Actions = {
 				form: { ...form, message: 'ログインIDもしくはパスワードが正しくありません' }
 			});
 		}
-		console.log(form);
 		return { form };
 	}
 };
