@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
+	import { enhance } from '$app/forms';
 
 	export let data: PageData;
-	const { form, message, errors, enhance, delayed } = superForm(data.form);
+	const { form, message, errors, delayed } = superForm(data.form);
 </script>
 
 <div class="relative flex flex-col items-center justify-center h-screen overflow-hidden">

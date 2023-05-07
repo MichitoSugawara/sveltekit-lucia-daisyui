@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
+	import { enhance } from '$app/forms';
 
 	export let data: PageData;
-	const { form, message, errors, capture, restore, enhance, delayed } = superForm(data.form);
+	const { form, message, errors, capture, restore, delayed } = superForm(data.form);
 	export const snapshot = { capture, restore };
 </script>
 
