@@ -1,38 +1,18 @@
-# create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+# sveltekit-lucia-daisyui
 
-## Creating a project
+## Quick setup dev environment
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Using devcontainer
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+1. Open devcontainer
+2. Run `$ cp .env.example .env` to set environment variables
+3. Run `$ pnpm run init` to resolve project dependencies and create the database
+4. Run `$ pnpm run dev` to execute this app
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Using compose file (DB container only)
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+1. Run `$ docker-compose up -d` to up DB container.
+2. Run `$ cp .env.example .env` to set environment variables
+3. Run `$ pnpm run init` to resolve project dependencies and create the database
+4. Run `$ pnpm run dev` to execute this app
