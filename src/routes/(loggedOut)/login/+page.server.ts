@@ -1,16 +1,12 @@
 import type { Actions, PageServerLoad } from './$types';
 import { loginSchema } from '$lib/schemas/userSchema';
 import { superValidate } from 'sveltekit-superforms/server';
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import { auth } from '$lib/server/lucia';
 
 const schema = loginSchema;
 
-export const load = (async (event) => {
-	// 認証されたユーザーであればユーザーページへリダイレクト
-	const session = await event.locals.auth.validate();
-	if (session) throw redirect(302, '/user');
-
+export const load = (async () => {
 	const form = await superValidate(schema);
 	return { form };
 }) satisfies PageServerLoad;

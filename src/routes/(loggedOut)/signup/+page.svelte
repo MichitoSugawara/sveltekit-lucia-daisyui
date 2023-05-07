@@ -1,10 +1,18 @@
 <script lang="ts">
+	import { loading } from '$lib/stores/loading';
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
-	import { enhance } from '$app/forms';
 
 	export let data: PageData;
-	const { form, message, errors, capture, restore, delayed } = superForm(data.form);
+	const { form, message, errors, submitting, enhance, capture, restore } = superForm(data.form, {
+		taintedMessage: false,
+		onSubmit: () => {
+			$loading = true;
+		},
+		onResult: () => {
+			$loading = false;
+		}
+	});
 	export const snapshot = { capture, restore };
 </script>
 
@@ -12,7 +20,7 @@
 	<div class="w-full lg:max-w-lg p-6 m-auto rounded-md shadow-2xl">
 		<h1 class="text-3xl font-semibold text-center text-primary">新規登録</h1>
 		{#if $message}<span class="text-sm text-red-600">{$message}</span>{/if}
-		<form class="space-y-4" method="POST">
+		<form class="space-y-4" method="POST" use:enhance>
 			<div>
 				<label class="label" for="username"
 					><span class="text-base label-text">ユーザー名</span></label
@@ -59,7 +67,7 @@
 					>{/if}
 			</div>
 
-			<div><button class="btn btn-block btn-primary" disabled={$delayed}>新規登録</button></div>
+			<div><button class="btn btn-block btn-primary" disabled={$submitting}>新規登録</button></div>
 			<div>
 				<span class="text-sm">すでにアカウントをお持ちの方は</span>
 				<a class="text-sm text-blue-600 hover:underline hover:text-blue-400" href="/login"
