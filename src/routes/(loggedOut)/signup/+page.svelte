@@ -12,7 +12,7 @@
 	<div class="w-full lg:max-w-lg p-6 m-auto rounded-md shadow-2xl">
 		<h1 class="text-3xl font-semibold text-center text-primary">新規登録</h1>
 		{#if $message}<span class="text-sm text-red-600">{$message}</span>{/if}
-		<form class="space-y-4" method="POST" use:enhance>
+		<form class="space-y-4" method="POST">
 			<div>
 				<label class="label" for="username"
 					><span class="text-base label-text">ユーザー名</span></label
