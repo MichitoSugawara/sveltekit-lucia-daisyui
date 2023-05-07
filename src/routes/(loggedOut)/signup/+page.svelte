@@ -5,14 +5,9 @@
 
 	export let data: PageData;
 	const { form, message, errors, submitting, enhance, capture, restore } = superForm(data.form, {
-		taintedMessage: false,
-		onSubmit: () => {
-			$loading = true;
-		},
-		onResult: () => {
-			$loading = false;
-		}
+		taintedMessage: false
 	});
+	$: $loading = $submitting;
 	export const snapshot = { capture, restore };
 </script>
 

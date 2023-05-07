@@ -5,14 +5,9 @@
 
 	export let data: PageData;
 	const { form, message, errors, submitting, enhance } = superForm(data.form, {
-		taintedMessage: false,
-		onSubmit: () => {
-			$loading = true;
-		},
-		onResult: () => {
-			$loading = false;
-		}
+		taintedMessage: false
 	});
+	$: $loading = $submitting;
 </script>
 
 <div class="relative flex flex-col items-center justify-center h-screen overflow-hidden">
