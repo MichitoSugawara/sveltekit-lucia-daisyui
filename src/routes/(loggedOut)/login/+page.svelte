@@ -4,10 +4,11 @@
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: PageData;
-	const { form, message, errors, submitting, enhance } = superForm(data.form, {
+	const { form, message, errors, submitting, enhance, capture, restore } = superForm(data.form, {
 		taintedMessage: false
 	});
 	$: $submittingStore = $submitting;
+	export const snapshot = { capture, restore };
 </script>
 
 <div class="relative flex flex-col items-center justify-center h-screen overflow-hidden">
