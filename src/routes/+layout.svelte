@@ -1,4 +1,8 @@
 <script>
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+	inject({ mode: dev ? 'development' : 'production' });
+	
 	import { navigating } from '$app/stores';
 	import '../app.postcss';
 	import Loading from '$lib/components/Loading.svelte';
